@@ -8,7 +8,7 @@
  * @copyright  (c) 2007-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-abstract class Kohana_Auth {
+abstract class Kohana_Auth{
 
 	// Auth instances
 	protected static $_instance;
@@ -32,7 +32,6 @@ abstract class Kohana_Auth {
 
 			// Set the session class name
 			$class = 'Auth_'.ucfirst($type);
-
 			// Create a new session instance
 			Auth::$_instance = new $class($config);
 		}
@@ -89,7 +88,15 @@ abstract class Kohana_Auth {
 		if (empty($password))
 			return FALSE;
 
-		return $this->_login($username, $password, $remember);
+		/*if (is_string($password))
+		{
+			// Create a hashed password
+			$password = $this->hash($password);
+			//$password = $this->$password;
+			//$password = $password;
+		}*/
+		
+		return $this->_login($username, $password, $remember);		
 	}
 
 	/**

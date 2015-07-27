@@ -8,9 +8,15 @@
 			</a>
 			<a class="brand" href="#"><?php echo $title; ?></a>
 			<div class="nav-collapse collapse">
-				<!-- <p class="navbar-text pull-right">
-				Logged in as <a href="#" class="navbar-link">Username</a>
-				</p> -->
+				<? if(Auth::instance()->logged_in()):?>
+				<p class="navbar-text pull-right">
+	            Добро пожаловать, <?= Auth::instance()->get_user()->username.'!';?>
+	            <a href='auth/logout'>Выход</a></p>
+			    <? else:?>
+					<p class="navbar-text pull-right">
+					<a href="auth" class="navbar-link">Вход</a>
+					</p>
+			    <? endif;?>
 				<ul class="nav">
 					<li class="active"><a href="">Главная</a></li>
 				</ul>

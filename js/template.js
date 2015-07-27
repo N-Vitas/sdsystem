@@ -8,7 +8,7 @@ function createData(action,argument) {
     $.ajax({
         type:"POST",
         data:{'data':argument},
-        url:"/main/"+action,
+        url:"/public/sdsystem/main/"+action,
         dataType:"json"             
         }).done(function (data)
             {                
@@ -21,17 +21,95 @@ function createData(action,argument) {
                 }
                 else
                 {
-                    data.errors.name ? $("#name").css('border','1px solid red') : $("#name").css('border','1px solid green');
-                    data.errors.birthday ? $("#birthday").css('border','1px solid red') : $("#birthday").css('border','1px solid green');
-                    data.errors.contact ? $("#contact").css('border','1px solid red') : $("#contact").css('border','1px solid green');
-                    data.errors.state ? $("#state").css('border','1px solid red') : $("#state").css('border','1px solid green');
-                    data.errors.scool ? $("#scool").css('border','1px solid red') : $("#scool").css('border','1px solid green');
-                    data.errors.job ? $("#job").css('border','1px solid red') : $("#job").css('border','1px solid green');
-                    data.errors.invalid ? $("#invalid").css('border','1px solid red') : $("#invalid").css('border','1px solid green');
-                    data.errors.diagnos ? $("#diagnos").css('border','1px solid red') : $("#diagnos").css('border','1px solid green');
-                    data.errors.ipr ? $("#ipr").css('border','1px solid red') : $("#ipr").css('border','1px solid green');
-                    data.errors.advanset ? $("#advanset").css('border','1px solid red') : $("#advanset").css('border','1px solid green');
-                    data.errors.myjob ? $("#myjob").css('border','1px solid red') : $("#myjob").css('border','1px solid green');
+                    if(data.errors.name){
+                        $("#name").css('border','1px solid red').find('span').text('sadfsgsdfghsh');
+                        $("#error_name").text(data.errors.name);
+                    }
+                    else{
+                        $("#name").css('border','1px solid green');
+                        $("#error_name").text("");
+                    }
+                    if(data.errors.birthday){
+                        $("#birthday").css('border','1px solid red');
+                        $("#error_birthday").text(data.errors.birthday);
+                    }
+                    else{
+                        $("#birthday").css('border','1px solid green');
+                        $("#error_birthday").text("");
+                    }
+                    if(data.errors.contact){
+                        $("#contact").css('border','1px solid red');
+                        $("#error_contact").text(data.errors.contact);
+                    }
+                    else{
+                        $("#contact").css('border','1px solid green');
+                        $("#error_contact").text("");
+                    }
+                    if(data.errors.state){
+                        $("#state").css('border','1px solid red');
+                        $("#error_state").text(data.errors.state);
+                    }
+                    else{
+                        $("#state").css('border','1px solid green');
+                        $("#error_state").text("");
+                    }
+                    if(data.errors.scool){
+                        $("#scool").css('border','1px solid red');
+                        $("#error_scool").text(data.errors.scool);
+                    }
+                    else{
+                        $("#scool").css('border','1px solid green');
+                        $("#error_scool").text("");
+                    }
+                    if(data.errors.job){
+                        $("#job").css('border','1px solid red');
+                        $("#error_job").text(data.errors.job);
+                    }
+                    else{
+                        $("#job").css('border','1px solid green');
+                        $("#error_job").text("");
+                    }
+                    if(data.errors.invalid){
+                        $("#invalid").css('border','1px solid red');
+                        $("#error_invalid").text(data.errors.invalid);
+                    }
+                    else{
+                        $("#invalid").css('border','1px solid green');
+                        $("#error_invalid").text("");
+                    }
+                    if(data.errors.diagnos){
+                        $("#diagnos").css('border','1px solid red');
+                        $("#error_diagnos").text(data.errors.diagnos);
+                    }
+                    else{
+                        $("#diagnos").css('border','1px solid green');
+                        $("#error_diagnos").text("");
+                    }
+                    if(data.errors.ipr){
+                        $("#ipr").css('border','1px solid red');
+                        $("#error_ipr").text(data.errors.ipr);
+                    }
+                    else{
+                        $("#ipr").css('border','1px solid green');
+                        $("#error_ipr").text("");
+                    }
+                    if(data.errors.advanset){
+                        $("#advanset").css('border','1px solid red');
+                        $("#error_advanset").text(data.errors.advanset);
+                    }
+                    else{
+                        $("#advanset").css('border','1px solid green');
+                        $("#error_advanset").text("");
+                    }
+                    if(data.errors.myjob){
+                        $("#myjob").css('border','1px solid red');
+                        $("#error_myjob").text(data.errors.myjob);
+                    }
+                    else{
+                        $("#myjob").css('border','1px solid green');
+                        $("#error_myjob").text("");
+                    }
+                    $(".span4")
                 }                
             });
 }
@@ -45,7 +123,7 @@ $(document).ready(function() {
     var example = $('#example').DataTable({
         "dom": '<"toolbar">frtip',
         //"dom": 'frtip',
-        "ajax": "/main/staff",
+        "ajax": "/public/sdsystem/main/staff",
         "columns": [
             { "data": "id" },
             { "data": "name" },
@@ -120,6 +198,17 @@ $(document).ready(function() {
         $("#ipr").val(     $("#example").dataTable().fnGetData(data[9])).css('border','1px solid green');
         $("#advanset").val($("#example").dataTable().fnGetData(data[10])).css('border','1px solid green');
         $("#myjob").val(   $("#example").dataTable().fnGetData(data[11])).css('border','1px solid green');
+        $("#error_name").text("");
+        $("#error_birthday").text("");
+        $("#error_contact").text("");
+        $("#error_state").text("");
+        $("#error_scool").text("");
+        $("#error_job").text("");
+        $("#error_invalid").text("");
+        $("#error_diagnos").text("");
+        $("#error_ipr").text("");
+        $("#error_advanset").text("");
+        $("#error_myjob").text("");
         $("#dialog").dialog(
         {
             open:function() {
@@ -153,7 +242,18 @@ $(document).ready(function() {
         $("#diagnos").css('border','1px solid grey')
         $("#ipr").css('border','1px solid grey')
         $("#advanset").css('border','1px solid grey')
-        $("#myjob").css('border','1px solid grey')
+        $("#myjob").css('border','1px solid grey')        
+        $("#error_name").text("");
+        $("#error_birthday").text("");
+        $("#error_contact").text("");
+        $("#error_state").text("");
+        $("#error_scool").text("");
+        $("#error_job").text("");
+        $("#error_invalid").text("");
+        $("#error_diagnos").text("");
+        $("#error_ipr").text("");
+        $("#error_advanset").text("");
+        $("#error_myjob").text("");
         $("#dialog").dialog(
         {
             open:function() {

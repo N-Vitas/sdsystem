@@ -8,7 +8,7 @@
  * @copyright  (c) 2007-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Kohana_Auth_File extends Auth {
+class Kohana_Auth_File{
 
 	// User list
 	protected $_users;
@@ -34,6 +34,7 @@ class Kohana_Auth_File extends Auth {
 	 */
 	protected function _login($username, $password, $remember)
 	{
+
 		if (is_string($password))
 		{
 			// Create a hashed password

@@ -102,7 +102,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/',
+	'base_url'   => '/public/sdsystem/',
 	'index_file'   => FALSE,
 ));
 
@@ -139,7 +139,7 @@ Kohana::modules(array(
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.
  */
-Cookie::$salt = 'Hj5asS5frf459S6SDq$54';
+Cookie::$salt = 'Hj5asxcvS5frf4xccc59S6SDq$54';
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of

@@ -17,9 +17,13 @@
 <script type="text/javascript" language="javascript" src="<?php echo URL::base(); ?>asseet/js/datatables.bootstrap.js"></script>
 <!-- 
 <script type="text/javascript" language="javascript" src="<?php echo URL::base(); ?>asseet/js/TableTools.js"></script>
-<script type="text/javascript" language="javascript" src="<?php echo URL::base(); ?>js/dataTables.editor.js"></script> -->
+<script type="text/javascript" language="javascript" src="<?php echo URL::base(); ?>js/getdatatable.data.js"></script> -->
 <script src="<?php echo URL::base(); ?>js/bootstrap.js"></script>
+<?if(Auth::instance()->logged_in()):?>
 <script src="<?php echo URL::base(); ?>js/template.js"></script>
+<?else:?>
+<script type="text/javascript" src="<?php echo URL::base(); ?>js/getdatatable.data.js"></script>
+<?endif;?>
 <title><?php echo $title; ?></title>
 <meta name="description" content="<?php echo $description; ?>" />
 </head>

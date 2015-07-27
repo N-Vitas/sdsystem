@@ -76,7 +76,7 @@ class Controller_Main extends Controller_Common {
 			}			
 		}	
 		else{
-			echo json_encode(["result"=>false,"errors"=>$post->errors()]);
+			echo json_encode(["result"=>false,"errors"=>$post->errors('models')]);
 		}
         die;
     }
@@ -140,6 +140,7 @@ class Controller_Main extends Controller_Common {
     // Регистрация пользователей 
     public function action_register()
     {
+        $this->template->positionleft = false;
     // Если есть данные, присланные методом POST    
     if ($_POST)
         {
@@ -159,7 +160,7 @@ class Controller_Main extends Controller_Common {
             // Назначаем ему роли 
             $model->add('roles', ORM::factory('role')->where('name', '=', 'login')->find());
             // И отправляем его на страницу пользователя 
-                $this->request->redirect('member/view/');
+                $this->request->redirect('main');
         }
         catch (ORM_Validation_Exception $e)
         {
@@ -209,24 +210,24 @@ class Controller_Main extends Controller_Common {
     public function action_login()
     {
         // Проверям, вдруг пользователь уже зашел 
-         if(Auth::instance()->logged_in())
+        if(Auth::instance()->logged_in())
             {
             // И если это так, то отправляем его сразу на страницу пользователей 
-            return $this->request->redirect('member/view');
+            return $this->request->redirect('main');
             }
  
         // Если же пользователь не зашел, но данные на страницу пришли, то: 
         if ($_POST)
         {
             // Создаем переменную, отвечающую за связь с моделью данных User 
-            $user = ORM::factory('user');
+            $user = ORM::factory('myuser');
             // в $status помещаем результат функции login 
-            $status = Auth::instance()->login($_POST['username'], $_POST['password']);
+            $status = Auth::instance()->login($_POST['login'], $_POST['password']);
             // Если логин успешен, то 
             if ($status)
             {
                 // Отправляем пользователя на его страницу 
-                $this->request->redirect('member/view');
+                $this->request->redirect('main');
             }
             else
             {
