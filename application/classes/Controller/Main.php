@@ -156,11 +156,11 @@ class Controller_Main extends Controller_Common {
         try
         {
             // Пытаемся сохранить пользователя (то есть, добавить в базу) 
-            $model->save();
+            //$model->save();
             // Назначаем ему роли 
             $model->add('roles', ORM::factory('role')->where('name', '=', 'login')->find());
             // И отправляем его на страницу пользователя 
-                $this->request->redirect('main');
+                $this->redirect('main');
         }
         catch (ORM_Validation_Exception $e)
         {

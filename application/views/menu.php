@@ -6,19 +6,19 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#"><?php echo $title; ?></a>
+			<a class="brand" href="<?php echo URL::base(); ?>"><?php echo $title; ?></a>
 			<div class="nav-collapse collapse">
 				<? if(Auth::instance()->logged_in()):?>
 				<p class="navbar-text pull-right">
 	            Добро пожаловать, <?= Auth::instance()->get_user()->username.'!';?>
-	            <a href='auth/logout'>Выход</a></p>
+	            <a href='<?php echo URL::base(); ?>auth/logout'>Выход</a> | <a href='<?php echo URL::base(); ?>auth/hashpass'>Изменить пароль</a></p>
 			    <? else:?>
 					<p class="navbar-text pull-right">
-					<a href="auth" class="navbar-link">Вход</a>
+					<a href="<?php echo URL::base(); ?>auth" class="navbar-link">Вход</a>
 					</p>
 			    <? endif;?>
 				<ul class="nav">
-					<li class="active"><a href="">Главная</a></li>
+					<li class="active"><a href="<?php echo URL::base(); ?>">Главная</a></li>
 				</ul>
 			</div> 
 		</div>

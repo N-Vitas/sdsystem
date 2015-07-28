@@ -16,7 +16,14 @@ class Model_Myuser extends ORM
 				),
 			);    
 	}*/
-	
+	public static function not_password($validation){
+		$auth = Auth::instance();
+     	$result = ORM::factory('myuser')->where('password', '=', $auth->hash_password($validation))->find();
+     	if($result->password)
+     		return true;
+     	else     		
+        	return false;
+    }
 	public function username_unique($username)
 	{
             $db = Database::instance();

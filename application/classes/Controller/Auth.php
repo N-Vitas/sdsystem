@@ -37,11 +37,45 @@ class Controller_Auth extends Controller_Common {
         // $this->template->content = View::factory($view);
         $this->template->content = $view;
         // $this->response->body(View::factory($view)); 
-    }    
+    }   
+    public function not_password($validation){
+      var_dump($validation);die;
+      /*if ($validation)
+      {
+          $validation->error($field, 'the_rule');
+      }*/
+    }
     public function action_hashpass(){
+
+    $this->template->positionleft = false;
 	   //Создание обьекта авторизации
 	   $auth = Auth::instance();
-       $this->template->content =  $auth->hash_password('admin');        
+     $data = array();
+     if($auth->logged_in()){
+        if($_POST){
+          $post = Validation::factory($_POST);
+          $post->rule('password_old','not_empty')
+               ->rule('password_old','Model_Myuser::not_password')
+               ->rule('password_new','not_empty')
+               ->rule('password_confirm','not_empty')
+               ->rule('password_confirm','matches', array(':validation', 'password_new', ':field'));
+          if($post->check()){
+            $model = ORM::factory('myuser')->where("id","=",$auth->get_user()->id)->find();
+            $model->password = $auth->hash_password($post['password_new']);
+            $model->save();
+            $this->redirect('main');
+          }
+          else{
+            $data = $post->errors("chanepass");
+          }          
+        }
+        $view = View::factory('chanepass');
+        $view->data = $data;
+        // $this->template->content = View::factory($view);
+        $this->template->content = $view;              
+      }else{
+        $this->redirect('auth');
+      }
     }   
     public function action_logout(){
 	   //Создание обьекта авторизации

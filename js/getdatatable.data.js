@@ -5,7 +5,7 @@ $(document).ready(function() {
     var example = $('#example').DataTable({
         // "dom": '<"toolbar">frtip',
         "dom": 'frtip',
-        "ajax": "/public/sdsystem/main/staff",
+        "ajax": "/main/staff",
         "columns": [
             { "data": "id" },
             { "data": "name" },

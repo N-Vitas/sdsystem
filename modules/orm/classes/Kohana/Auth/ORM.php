@@ -32,7 +32,7 @@ class Kohana_Auth_ORM extends Auth {
 			if (is_array($role))
 			{
 				// Get all the roles
-				$roles = ORM::factory('Role')
+				$roles = ORM::factory('role')
 							->where('name', 'IN', $role)
 							->find_all()
 							->as_array(NULL, 'id');

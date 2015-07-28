@@ -20,8 +20,8 @@ return array
 			 */
 			'hostname'   => 'localhost',
 			'database'   => 'sdsystem',
-			'username'   => 'admin',
-			'password'   => 'admin',
+			'username'   => 'root',
+			'password'   => '123',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => '',

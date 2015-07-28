@@ -8,7 +8,7 @@ function createData(action,argument) {
     $.ajax({
         type:"POST",
         data:{'data':argument},
-        url:"/public/sdsystem/main/"+action,
+        url:"/main/"+action,
         dataType:"json"             
         }).done(function (data)
             {                
@@ -123,7 +123,7 @@ $(document).ready(function() {
     var example = $('#example').DataTable({
         "dom": '<"toolbar">frtip',
         //"dom": 'frtip',
-        "ajax": "/public/sdsystem/main/staff",
+        "ajax": "/main/staff",
         "columns": [
             { "data": "id" },
             { "data": "name" },
