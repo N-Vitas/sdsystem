@@ -125,7 +125,7 @@ $(document).ready(function() {
         //"dom": 'frtip',
         "ajax": "/main/staff",
         "columns": [
-            { "data": "id" },
+            { "data": "num" },
             { "data": "name" },
             { "data": "birthday" },
             { "data": "contact", "render": $.fn.dataTable.render.number( '-' )},
@@ -137,7 +137,15 @@ $(document).ready(function() {
             { "data": "ipr" },
             { "data": "advanset" },
             { "data": "myjob" },
+            { "data": "id" },
         ],
+        /*"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            }
+        ],*/
         /*"columnDefs": [
             {
                 "targets": [ 0 ],
@@ -186,7 +194,7 @@ $(document).ready(function() {
     $(".update, .delete").attr('disabled',true);
     $('input.update').on( 'click', function () {
         var data = $('tr.selected td');
-        $("#id").val(      $("#example").dataTable().fnGetData(data[0])).css('border','1px solid green');
+        $("#id").val(      $("#example").dataTable().fnGetData(data[12])).css('border','1px solid green');
         $("#name").val(    $("#example").dataTable().fnGetData(data[1])).css('border','1px solid green');
         $("#birthday").val($("#example").dataTable().fnGetData(data[2])).css('border','1px solid green');
         $("#contact").val( $("#example").dataTable().fnGetData(data[3])).css('border','1px solid green');

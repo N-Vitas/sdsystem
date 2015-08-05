@@ -13,10 +13,12 @@ class Controller_Main extends Controller_Common {
     { 
     	$item = ORM::factory('item')->find_all();
 		try{
+            $i=1;
 			foreach($item as $val)
 			{	
 				$data[] = array(
 					"id" => $val->id,
+                    "num" => $i++,
 					"name" => $val->name,
 					"birthday" => $val->birthday,
 					"contact" => $val->contact,

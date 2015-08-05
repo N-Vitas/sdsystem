@@ -1,3 +1,4 @@
 .body{margin-top: 60px;}
 .hero-unit{font-size: 12px !important;line-height: 100% !important;padding: 20px !important;}
 .column_filter{width:80px;}
+//div.dataTables_scrollBody tbody tr:first-child th, div.dataTables_scrollBody tbody tr td:first-child{display: none;}

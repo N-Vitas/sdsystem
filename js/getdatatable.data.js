@@ -7,7 +7,7 @@ $(document).ready(function() {
         "dom": 'frtip',
         "ajax": "/main/staff",
         "columns": [
-            { "data": "id" },
+            { "data": "num" },
             { "data": "name" },
             { "data": "birthday" },
             { "data": "contact", "render": $.fn.dataTable.render.number( '-' )},
@@ -19,6 +19,7 @@ $(document).ready(function() {
             { "data": "ipr" },
             { "data": "advanset" },
             { "data": "myjob" },
+            { "data": "id" },
         ],
         "scrollY": "300px",
         "scrollX": "100%",
